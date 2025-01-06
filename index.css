@@ -11,7 +11,7 @@
 
 body {
   background-color: rgb(234, 245, 249);
-  font-family: "Barlow Semi Condensed", serif;
+  font-family: "Barlow Semi Condensed", sans-serif;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -27,22 +27,46 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns */
   grid-template-rows: repeat(2, auto); /* 2 rows */
-  gap: 20px; /* Optional, for spacing between items */
+  gap: 30px; /* Optional, for spacing between items */
+  align-items: stretch;
 }
 .cards .card {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
   border-radius: 8px;
 }
 .cards .card .img-name {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 .cards .card .img-name img {
+  width: 40px;
   border-radius: 100%;
 }
 .cards .card .img-name span {
   display: block;
+}
+.cards .card .img-name span:first-of-type {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-block-end: 2px;
+}
+.cards .card .img-name span + span {
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.cards .card .content h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-block: 20px;
+}
+.cards .card .content p {
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .item1 {
@@ -86,7 +110,53 @@ body {
   background-color: hsl(0, 0%, 100%);
 }
 
-@media (max-width: 700px) {
+.item3 .img-name span,
+.item5 .img-name span {
+  color: hsl(217, 19%, 35%);
+}
+.item3 .img-name span + span,
+.item5 .img-name span + span {
+  color: hsla(217, 19%, 35%, 0.5);
+}
+.item3 .content h1,
+.item5 .content h1 {
+  color: hsl(217, 19%, 35%);
+}
+.item3 .content p,
+.item5 .content p {
+  color: hsla(217, 19%, 35%, 0.7);
+}
+
+.item1 .img-name span,
+.item2 .img-name span,
+.item4 .img-name span {
+  color: hsl(210, 46%, 95%);
+}
+.item1 .img-name span + span,
+.item2 .img-name span + span,
+.item4 .img-name span + span {
+  color: hsla(210, 46%, 95%, 0.5);
+}
+.item1 .content h1,
+.item2 .content h1,
+.item4 .content h1 {
+  color: hsl(0, 0%, 100%);
+}
+.item1 .content p,
+.item2 .content p,
+.item4 .content p {
+  color: hsla(210, 46%, 95%, 0.7);
+}
+
+footer {
+  color: hsl(219, 29%, 14%);
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  padding-block: 20px;
+}
+
+@media (max-width: 900px) {
   .cards {
     grid-template-columns: 1fr; /* Make it a single column layout */
   }
