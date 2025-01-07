@@ -48,16 +48,30 @@ body {
   .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
     padding: 30px;
     border-radius: 8px;
+    position: relative;
+
+
 
     .img-name {
       display: flex;
       align-items: center;
       gap: 16px;
 
-      img {
+      .quote-img {
+        background-color: transparent;
+        position: absolute;
+        top: 2px;
+        right: 50px;
+        width: 160px;
+        opacity: 0.8;
+        width: 160px;
+      }
+
+
+      .img {
         width: 40px;
         border-radius: 100%;
       }
@@ -81,7 +95,6 @@ body {
 
     // styles for content
     .content {
-    //   margin-block-start: 20px;
 
       h1 {
         font-size: 1.7rem;
@@ -136,6 +149,7 @@ body {
 
 .white {
   background-color: $white;
+  font-family: $barlow-semi-condensed, sans-serif;
 }
 
 .item3,
@@ -212,4 +226,19 @@ footer {
     grid-column: span 1; /* Each item will span 1 column */
     grid-row: auto; /* Allow the items to stack vertically */
   }
+}
+
+.white-circle {
+  padding: 1px;
+  border: 2px solid $white;
+}
+.violet-circle {
+  padding: 1px;
+  border: 2px solid $moderate-violet;
+}
+
+
+.h1 {
+  position: relative;
+  z-index: 1;
 }
