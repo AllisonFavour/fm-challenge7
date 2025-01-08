@@ -38,7 +38,7 @@ After carefully taking note of the design layout i go ahead to write out the HTM
 Considering HTML semantic in mind, i started out with main tag as the parent element which is the child element to body. the main tag houses a section which holds a div with the class name of .cards and footer.
 The .cards container holds all the card elements which i used article for each card. In each .card there is two child elements which are header and a div with the class name of .content.
 The header element contains an image and a div with the class name of .name-status which also has two child elements of span with each class name of .name and .status.
-The .content container holds two element as well which are h2 tag with the class name of .title and p tag with the class name of .description.
+The .content container holds two element as well which are h1 tag with the class name of .title and p tag with the class name of .description.
 Then finally for the footer we have two p tags.
 
 For the styling, i made use of the SASS tool which additional features helped make my code easier to write and understand.
@@ -70,6 +70,31 @@ Making use of the grid properties to achieve my desired styling, the css code be
     gap: 20px; /* Optional, for spacing between items */
     align-items: stretch;
 }
+
+  .item1 {
+    grid-column: span 2; /* Item 1 spans 2 columns */
+    grid-row: 1; /* Item 1 is in the top row */
+  }
+
+  .item2 {
+    grid-column: span 1; /* Item 2 spans 1 column */
+    grid-row: 1; /* Item 2 is in the top row */
+  }
+
+  .item3 {
+    grid-column: span 1; /* Item 3 spans 1 column */
+    grid-row: 2; /* Item 3 is in the bottom row */
+  }
+
+  .item4 {
+    grid-column: span 2; /* Item 4 spans 2 columns */
+    grid-row: 2; /* Item 4 is in the bottom row */
+  }
+
+  .item5 {
+    grid-column: span 1; /* Item 5 spans 1 column */
+    grid-row: span 2; /* Item 5 spans 2 rows */
+  }
 ```
 
 Making use of SASS directives like 
