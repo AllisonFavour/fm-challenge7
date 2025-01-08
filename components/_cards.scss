@@ -1,0 +1,334 @@
+// creating mixins for card, name, status, title, description
+@mixin card-basic-styles {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 2px 16px hsla(0, 0%, 0%, 0.15);
+}
+
+@mixin name-basic-styles {
+  display: block;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 600;
+}
+
+@mixin status-basic-styles {
+  font-size: clamp(0.8rem, 3vw, 1.3rem);
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+@mixin title-basic-styles {
+  font-size: clamp(1.37rem, 3vw, 1.5rem);
+  font-weight: 600;
+}
+
+@mixin description-basic-styles {
+  font-size: clamp(1.1rem, 3vw, 1.2rem);
+  font-weight: 500;
+}
+
+// styles for .cards which is the parent container of all the child card
+.cards {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 20px; /* Optional, for spacing between items */
+  align-items: stretch;
+
+
+// styles for each card layout
+  .card {
+    @include card-basic-styles;
+
+    .img-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .img {
+        width: 50px;
+        border-radius: 100%;
+      }
+
+      @media (max-width: 1205px) and (min-width: 900px) {
+        .img {
+          width: 26px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .img {
+          width: 30px;
+        }
+      }
+
+      .violet-circle {
+        padding: 1px;
+        border: 1px solid $moderate-violet;
+      }
+
+      .white-circle {
+        padding: 1px;
+        border: 1px solid $neutral-light-grayish-blue;
+      }
+
+      .name-status {
+        .name {
+          @include name-basic-styles;
+        }
+
+        .status {
+          @include status-basic-styles;
+        }
+
+        @media (max-width: 1205px) and (min-width: 900px) {
+          .name {
+            font-size: 0.8rem;
+          }
+
+          .status {
+            font-size: 0.7rem;
+          }
+        }
+
+        @media (max-width: 900px) {
+          .name {
+            font-size: 1.4rem;
+          }
+
+          .status {
+            font-size: 1.1rem;
+          }
+        }
+        
+      }
+
+      .quote-img {
+        width: 140px;
+        background-color: transparent;
+        position: absolute;
+        top: 0;
+        right: 90px;
+        opacity: 0.6;
+        z-index: 0;
+      }
+
+      @media (max-width: 900px) {
+        .quote-img {
+          width: 120px;
+          background-color: transparent;
+          position: absolute;
+          top: 0;
+          right: 30px;
+          opacity: 0.6;
+          z-index: 0;
+        }
+      }
+    }
+
+    .content {
+      .title {
+        @include title-basic-styles;
+        margin-block: 20px
+      }
+
+      .description {
+        @include description-basic-styles;
+      }
+
+      @media (max-width: 1205px) and (min-width: 900px) {
+        .title {
+          font-size: 1.2rem;
+        }
+
+        .description {
+          font-size: 1rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .title {
+          font-size: 1.2rem;
+        }
+
+        .description {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  // specific theme styles for the card
+  // style for card with the class name of .violet
+  .violet {
+    background-color: $moderate-violet;
+
+    .img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .name {
+      @include name-basic-styles;
+      color: $neutral-light-grayish-blue;
+      position: relative;
+      z-index: 1;
+    }
+
+    .status {
+      @include status-basic-styles;
+      color: hsla(210, 46%, 95%, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    .title {
+      color: $neutral-light-grayish-blue;
+      position: relative;
+      z-index: 1;
+    }
+
+    .description {
+      color: hsla(210, 46%, 95%, 0.7);
+    }
+  }
+  // style for card with the class name of .grayish-blue
+  .grayish-blue {
+    background-color: $very-dark-grayish-blue;
+
+    .name {
+      color: $neutral-light-grayish-blue;
+    }
+
+    .status {
+      color: hsla(210, 46%, 95%, 0.5);
+    }
+
+    .title {
+      color: $neutral-light-grayish-blue;
+    }
+
+    .description {
+      color: hsla(210, 46%, 95%, 0.7);
+    }
+  }
+
+  // style for card with the class name of .blackish-blue
+  .blackish-blue {
+    background-color: $very-dark-blackish-blue;
+
+    .name {
+      color: $neutral-light-grayish-blue;
+    }
+
+    .status {
+      color: hsla(210, 46%, 95%, 0.5);
+    }
+
+    .title {
+      color: $neutral-light-grayish-blue;
+    }
+
+    .description {
+      color: hsla(210, 46%, 95%, 0.7);
+    }
+  }
+
+  .white {
+    background-color: $white;
+    font-family: $barlow-semi-condensed, sans-serif;
+
+    .name {
+      color: $very-dark-grayish-blue;
+    }
+
+    .status {
+      color: hsla(217, 19%, 35%, 0.5);
+    }
+
+    .title {
+      color: $very-dark-grayish-blue;
+    }
+
+    .description {
+      color: hsla(217, 19%, 35%, 0.7);
+    }
+  }
+
+  .item1 {
+    grid-column: span 2; /* Item 1 spans 2 columns */
+    grid-row: 1; /* Item 1 is in the top row */
+  }
+
+  .item2 {
+    grid-column: span 1; /* Item 2 spans 1 column */
+    grid-row: 1; /* Item 2 is in the top row */
+  }
+
+  .item3 {
+    grid-column: span 1; /* Item 3 spans 1 column */
+    grid-row: 2; /* Item 3 is in the bottom row */
+  }
+
+  .item4 {
+    grid-column: span 2; /* Item 4 spans 2 columns */
+    grid-row: 2; /* Item 4 is in the bottom row */
+  }
+
+  .item5 {
+    grid-column: span 1; /* Item 5 spans 1 column */
+    grid-row: span 2; /* Item 5 spans 2 rows */
+  }
+}
+
+
+// media query for a maximum of 900px and below
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr; /* Make it a single column layout */
+
+    .card {
+      width: 100%; /* Make each item take full width of the container */
+      height: auto; /* Allow height to adjust based on content */
+
+      .name-status {
+        
+        .name {
+          font-size: 1rem;
+        }
+
+        .status {
+          font-size: 0.9rem;
+        }
+
+        .content {
+          .title {
+            font-size: 1.3rem;
+          }
+
+          .description {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+
+    .item1,
+    .item2,
+    .item3,
+    .item4,
+    .item5 {
+      grid-column: span 1; /* Each item will span 1 column */
+      grid-row: auto; /* Allow the items to stack vertically */
+    }
+  }
+
+
+}

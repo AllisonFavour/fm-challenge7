@@ -1,244 +1,35 @@
 // import barlow semi condensed font
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-// CSS Reset
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// import all the components to the index.scss file
+@import './components/resets';
+@import './components/variables';
+@import './components/cards';
+@import './components/footer';
+
 
 // set font-size to the root to enable the usage of rem for the fonts
 :root {
   font-size: 13px;
 }
 
-// create variables for colors and fonts
-$moderate-violet: hsl(263, 55%, 52%);
-$very-dark-grayish-blue: hsl(217, 19%, 35%);
-$very-dark-blackish-blue: hsl(219, 29%, 14%);
-$white: hsl(0, 0%, 100%);
-$neutral-light-gray: hsl(0, 0%, 81%);
-$neutral-light-grayish-blue: hsl(210, 46%, 95%);
-$barlow-semi-condensed: "Barlow Semi Condensed";
 
-// styles for body
+// // styles for body
 body {
-  background-color: rgb(234, 245, 249);
+  width: 100%;
+  // background-color: rgb(234, 245, 249);
+  background-color: hsl(196, 55.6%, 94.7%);
   font-family: $barlow-semi-condensed, sans-serif;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 4rem;
+  overflow-x: hidden;
 }
 
-// styles for card
-.cards {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-template-rows: repeat(2, auto); /* 2 rows */
-  gap: 30px; /* Optional, for spacing between items */
-  align-items: stretch;
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 30px;
-    border-radius: 8px;
-    position: relative;
-
-
-
-    .img-name {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-
-      .quote-img {
-        background-color: transparent;
-        position: absolute;
-        top: 2px;
-        right: 50px;
-        width: 160px;
-        opacity: 0.8;
-        width: 160px;
-      }
-
-
-      .img {
-        width: 40px;
-        border-radius: 100%;
-      }
-
-      span {
-        display: block;
-      }
-
-      span:first-of-type {
-        font-size: 1.3rem;
-        font-weight: 500;
-        margin-block-end: 2px;
-      }
-
-      span + span {
-        font-size: 1rem;
-        font-weight: 400;
-        text-transform: capitalize;
-      }
-    }
-
-    // styles for content
-    .content {
-
-      h1 {
-        font-size: 1.7rem;
-        font-weight: 600;
-        margin-block: 20px;
-      }
-
-      p {
-        font-size: 1.2rem;
-        font-weight: 500;
-      }
-    }
+@media (max-width: 700px) {
+  body {
+    padding: 0.2rem;
   }
-}
-
-.item1 {
-  grid-column: span 2; /* Item 1 spans 2 columns */
-  grid-row: 1; /* Item 1 is in the top row */
-}
-
-.item2 {
-  grid-column: span 1; /* Item 2 spans 1 column */
-  grid-row: 1; /* Item 2 is in the top row */
-}
-
-.item3 {
-  grid-column: span 1; /* Item 3 spans 1 column */
-  grid-row: 2; /* Item 3 is in the bottom row */
-}
-
-.item4 {
-  grid-column: span 2; /* Item 4 spans 2 columns */
-  grid-row: 2; /* Item 4 is in the bottom row */
-}
-
-.item5 {
-  grid-column: span 1; /* Item 5 spans 1 column */
-  grid-row: span 2; /* Item 5 spans 2 rows */
-}
-
-.violet {
-  background-color: $moderate-violet;
-}
-
-.grayish-blue {
-  background-color: $very-dark-grayish-blue;
-}
-
-.blackish-blue {
-  background-color: $very-dark-blackish-blue;
-}
-
-.white {
-  background-color: $white;
-  font-family: $barlow-semi-condensed, sans-serif;
-}
-
-.item3,
-.item5 {
-  .img-name {
-    span {
-      color: hsl(217, 19%, 35%);
-    }
-
-    span + span {
-      color: hsla(217, 19%, 35%, 0.5);
-    }
-  }
-
-  .content {
-    h1 {
-      color: $very-dark-grayish-blue;
-    }
-
-    p {
-      color: hsla(217, 19%, 35%, 0.7);
-    }
-  }
-}
-
-.item1,
-.item2,
-.item4 {
-  .img-name {
-    span {
-      color: $neutral-light-grayish-blue;
-    }
-
-    span + span {
-      color: hsla(210, 46%, 95%, 0.5);
-    }
-  }
-
-  .content {
-    h1 {
-      color: $white;
-    }
-
-    p {
-      color: hsla(210, 46%, 95%, 0.7);
-    }
-  }
-}
-
-footer {
-  color: $very-dark-blackish-blue;
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: center;
-  padding-block: 20px;
-}
-
-// media query for a maximum of 700px and below
-@media (max-width: 900px) {
-  .cards {
-    grid-template-columns: 1fr; /* Make it a single column layout */
-  }
-
-  .card {
-    width: 100%; /* Make each item take full width of the container */
-    height: auto; /* Allow height to adjust based on content */
-  }
-
-  .item1,
-  .item2,
-  .item3,
-  .item4,
-  .item5 {
-    grid-column: span 1; /* Each item will span 1 column */
-    grid-row: auto; /* Allow the items to stack vertically */
-  }
-}
-
-.white-circle {
-  padding: 1px;
-  border: 2px solid $white;
-}
-.violet-circle {
-  padding: 1px;
-  border: 2px solid $moderate-violet;
-}
-
-
-.h1 {
-  position: relative;
-  z-index: 1;
 }
